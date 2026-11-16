@@ -62,6 +62,20 @@ CORS_ALLOWED_ORIGINS = [
     "https://hospital-management-frontend.onrender.com",
 ]
 
+ALLOWED_HOSTS = [
+    "hospital-management-pjt1.onrender.com",
+     "127.0.0.1",
+     "localhost",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://hospital-management-pjt1.onrender.com",
+    "http://127.0.0.1",
+    "http://localhost",
+  
+]
+
+DEBUG = False
 
 ROOT_URLCONF = 'smart_care.urls'
 
