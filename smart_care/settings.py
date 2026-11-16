@@ -61,7 +61,7 @@ MIDDLEWARE = [
 
 
 CORS_ALLOWED_ORIGINS = [
-    "https://hospital-management-frontend.onrender.com",
+    "https://hospital-management-pjt.onrender.com",
 ]
 
 ALLOWED_HOSTS = [
@@ -69,6 +69,7 @@ ALLOWED_HOSTS = [
      "127.0.0.1",
      "localhost",
 ]
+
 
 CSRF_TRUSTED_ORIGINS = [
     "https://hospital-management-pjt1.onrender.com",
