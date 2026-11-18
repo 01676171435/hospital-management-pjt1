@@ -21,6 +21,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+
+
 import os
 import cloudinary
 
@@ -36,10 +38,10 @@ if os.environ.get("CLOUDINARY_CLOUD_NAME"):
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage' 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = []
 
+
+DEBUG = False
 
 # Application definition
 
@@ -92,7 +94,6 @@ CSRF_TRUSTED_ORIGINS = [
   
 ]
 
-DEBUG = False
 
 ROOT_URLCONF = 'smart_care.urls'
 
