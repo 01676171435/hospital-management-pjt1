@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from patient.models import Patient
+from cloudinary.models import CloudinaryField
+
 
 class Specialization(models.Model):
     name =models.CharField(max_length = 30)
@@ -26,7 +28,7 @@ class AvailableTime(models.Model):
 
 class Doctor(models.Model):
     user=models.OneToOneField(User, on_delete=models.CASCADE)
-    image=models.ImageField(upload_to="doctor/images")
+    image  = CloudinaryField('image', folder='doctor', blank=True, null=True)
     designation=models.ManyToManyField(Designation)
     apecialization=models.ManyToManyField(Specialization)
     availableTime=models.ManyToManyField(AvailableTime,)
