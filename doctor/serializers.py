@@ -28,7 +28,11 @@ class DoctorSerializer(serializers.ModelSerializer):
         model=models.Doctor
         fields='__all__'
 
-
+        def get_image(self, obj):
+            if obj.image:
+                return obj.image.url
+            return None
+        
 class ReviewSerializer(serializers.ModelSerializer):
 
     class Meta:
