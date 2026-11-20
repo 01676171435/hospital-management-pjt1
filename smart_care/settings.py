@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-import os
+
 
 from pathlib import Path
 
@@ -22,39 +22,30 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
+from dotenv import load_dotenv
+load_dotenv()
 
 import os
 import cloudinary
 
 SECRET_KEY = os.environ.get("SECRET_KEY", "fallback-secret")
     
-cloudinary.config(
-    cloud_name=os.environ.get("CLOUDINARY_CLOUD_NAME"),
-    api_key=os.environ.get("CLOUDINARY_API_KEY"),
-    api_secret=os.environ.get("CLOUDINARY_API_SECRET"),
-    secure=True,
-)
+if os.environ.get("CLOUDINARY_CLOUD_NAME"):
+    cloudinary.config(
+        cloud_name=os.environ.get("CLOUDINARY_CLOUD_NAME"),
+        api_key=os.environ.get("CLOUDINARY_API_KEY"),
+        api_secret=os.environ.get("CLOUDINARY_API_SECRET"),
+    )
 
-CLOUDINARY_STORAGE = {
-    "CLOUD_NAME": os.environ.get("CLOUDINARY_CLOUD_NAME"),
-    "API_KEY": os.environ.get("CLOUDINARY_API_KEY"),
-    "API_SECRET": os.environ.get("CLOUDINARY_API_SECRET"),
-}
-
-STORAGES = {
-    "default": {
-        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
-    },
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage' 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
 
-DEBUG = False
+DEBUG = True
+
+
 
 # Application definition
 
@@ -95,8 +86,9 @@ CORS_ALLOWED_ORIGINS = [
 
 ALLOWED_HOSTS = [
     "hospital-management-pjt1.onrender.com",
-     "127.0.0.1",
-     "localhost",
+    "127.0.0.1",
+    "localhost",
+    
 ]
 
 
