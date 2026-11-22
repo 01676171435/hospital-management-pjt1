@@ -23,15 +23,15 @@ class AvailableTimeSerializer(serializers.ModelSerializer):
 
 
 class DoctorSerializer(serializers.ModelSerializer):
-
+    image = serializers.SerializerMethodField()
     class Meta:
         model=models.Doctor
         fields='__all__'
 
-        def get_image(self, obj):
-            if obj.image:
-                return obj.image.url
-            return None
+    def get_image(self, obj):
+        if obj.image:
+            return obj.image.url
+        return None
         
 class ReviewSerializer(serializers.ModelSerializer):
 

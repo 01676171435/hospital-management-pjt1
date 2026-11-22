@@ -82,6 +82,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "https://hospital-management-pjt.onrender.com",
+    "http://127.0.0.1:5500"
 ]
 
 ALLOWED_HOSTS = [
